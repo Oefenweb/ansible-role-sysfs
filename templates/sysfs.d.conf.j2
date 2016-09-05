@@ -1,5 +1,0 @@
-# {{ ansible_managed }}
-{% for option in sysfs_configuration.options %}
-  {%- if option.action is defined %}{{ option.action }} {% endif -%}
-  {{- option.attribute }} = {{ option.value }}
-{% endfor %}
