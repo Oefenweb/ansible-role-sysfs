@@ -1,40 +1,68 @@
+## sysfs
 
-[![Build Status](https://travis-ci.org/wybczu/ansible-role-sysfs.svg?branch=master)](https://travis-ci.org/wybczu/ansible-role-sysfs)
+[![Build Status](https://travis-ci.org/Oefenweb/ansible-sysfs.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-sysfs) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-sysfs-blue.svg)](https://galaxy.ansible.com/Oefenweb/sysfs)
 
-sysfs
-=====
+Manages sysfs in Debian-like systems (using [sysfsutils](http://packages.ubuntu.com/trusty/sysfsutils)).
 
-A simple role for managing sysfs settings permanently.
+#### Requirements
 
-Role Variables
---------------
+* `sysfsutils` (will be installed)
 
- * `sysfs_configuration` - a configuration hash for sysfs role
-   - `name` - name of the configuration file
-   - `priority` - files are loaded in lexicographical order - files with higher
-      priority are loaded later
-   - `options` - a hash with actual options which should be set
-     - `action` - *mode* or *owner* - when not specified the role sets the new
-       value for specified attribute
-     - `attribute` - name of an attribute, specified as a path without `/sys`
-       prefix
-     - `value` - a new value for the attribute
+#### Variables
 
-Example Playbook
-----------------
+* `sysfs_sysfs_d_files` [default: `{}`]: `/etc/sysfs.d/*` file(s) declarations
+* `sysfs_sysfs_d_files.key`: The name of the sysfs configuration file (e.g `001-transparent-hugepage.conf`)
+* `sysfs_sysfs_d_files.key.{n}.action` [optional]: `mode` or `owner`, when not specified the new value for specified attribute is set 
+* `sysfs_sysfs_d_files.key.{n}.attribute` [required]: Name of an attribute, specified as a path without `/sys` prefix (e.g. `kernel/mm/transparent_hugepage/enabled`)
+* `sysfs_sysfs_d_files.key.{n}.value` [required]: Value for the attribute (e.g. `never`)
 
-    - hosts: servers
-      roles:
-        - role: wybczu.sysctl
-          sysfs_configuration:
-            name: set_sda_timeout
-            priority: 50
-            options:
-              - { attribute: 'block/sda/device/timeout', value: '60' }
-              - { action: 'owner', attribute: 'power/state', value: 'root:power' }
-              - { action: 'mode', attribute: 'power/state', value: '0660' }
+#### Dependencies
 
-License
--------
+None
+
+#### Example
+
+##### Simple
+
+```yaml
+---
+- hosts: all
+  roles:
+    - sysfs
+```
+
+##### Advanced
+
+```yaml
+---
+- hosts: all
+  roles:
+    - sysfs
+  vars:
+    sysfs_sysfs_d_files:
+      000-power-state.conf:
+        - action: mode
+          attribute: power/state
+          value: '0660'
+        - action: owner
+          attribute: power/state
+          value: 'root:vagrant'
+      001-transparent-hugepage.conf:
+        - attribute: kernel/mm/transparent_hugepage/enabled
+          value: never
+        - attribute: kernel/mm/transparent_hugepage/defrag
+          value: never
+
+```
+
+#### License
 
 Apache
+
+#### Author Information
+
+* Mischa ter Smitten (based on work of [Lukasz Szczesny](https://github.com/wybczu))
+
+#### Feedback, bug-reports, requests, ...
+
+Are [welcome](https://github.com/Oefenweb/ansible-sysfs/issues)!

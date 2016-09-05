@@ -1,7 +1,7 @@
 # test file for sysfs
 ---
-- hosts: localhost
-  connection: local
+- hosts: all
+  remote_user: vagrant
   sudo: true
   roles:
     - ../../
@@ -35,7 +35,7 @@
           value: '0660'
         - action: owner
           attribute: power/state
-          value: 'root:travis'
+          value: 'root:vagrant'
       001-transparent-hugepage.conf:
         - attribute: kernel/mm/transparent_hugepage/enabled
           value: never

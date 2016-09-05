@@ -1,6 +1,0 @@
----
-
-- name: install sysfsutils package
-  apt:
-    name: sysfsutils
-    state: installed

@@ -1,28 +1,21 @@
+# meta file for sysfs
+---
 galaxy_info:
-  author: Lukasz Szczesny
-  description: ansible role for managing sysfs configuration
-
+  author: Mischa ter Smitten
+  company: Oefenweb.nl B.V.
+  description: Manages sysfs in Debian-like systems
   license: Apache
-
-  min_ansible_version: 1.2
-
+  min_ansible_version: 1.6
   platforms:
-    - name: EL
-      versions:
-        - 6
-        - 7
     - name: Ubuntu
       versions:
+        - precise
         - trusty
-        - utopic
-        - vivid
-        - wily
         - xenial
     - name: Debian
       versions:
+        - wheezy
         - jessie
-        - sid
-        - stretch
-
   galaxy_tags:
     - system
+dependencies: []
