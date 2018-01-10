@@ -59,7 +59,7 @@
     owner: root
     group: root
     mode: 0755
-  when: "{{ sysfs_uses_old_sysfsutils | bool == true }}"
+  when: sysfs_uses_old_sysfsutils
   notify: restart sysfsutils
   tags:
     - configuration
