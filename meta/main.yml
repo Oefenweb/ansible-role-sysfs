@@ -1,6 +1,7 @@
 # meta file for sysfs
 ---
 galaxy_info:
+  role_name: sysfs
   author: Mischa ter Smitten
   company: Oefenweb.nl B.V.
   description: Manages sysfs in Debian-like systems
