@@ -13,7 +13,7 @@
       changed_when: false
       failed_when: >
         check_permissions.stat.pw_name != 'root'
-        and check_permissions.stat.gr_name != 'vagrant'
+        and check_permissions.stat.gr_name != 'travis'
         and check_permissions.stat.mode != '0660'
       with_items:
         - /sys/power/state

@@ -1,6 +1,7 @@
 ## sysfs
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-sysfs.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-sysfs) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-sysfs-blue.svg)](https://galaxy.ansible.com/Oefenweb/sysfs)
+[![Build Status](https://travis-ci.org/Oefenweb/ansible-sysfs.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-sysfs)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-sysfs-blue.svg)](https://galaxy.ansible.com/Oefenweb/sysfs)
 
 Manages sysfs in Debian-like systems (using [sysfsutils](http://packages.ubuntu.com/trusty/sysfsutils)).
 
@@ -12,7 +13,7 @@ Manages sysfs in Debian-like systems (using [sysfsutils](http://packages.ubuntu.
 
 * `sysfs_sysfs_d_files` [default: `{}`]: `/etc/sysfs.d/*` file(s) declarations
 * `sysfs_sysfs_d_files.key`: The name of the sysfs configuration file (e.g `001-transparent-hugepage.conf`)
-* `sysfs_sysfs_d_files.key.{n}.action` [optional]: `mode` or `owner`, when not specified the new value for specified attribute is set 
+* `sysfs_sysfs_d_files.key.{n}.action` [optional]: `mode` or `owner`, when not specified the new value for specified attribute is set
 * `sysfs_sysfs_d_files.key.{n}.attribute` [required]: Name of an attribute, specified as a path without `/sys` prefix (e.g. `kernel/mm/transparent_hugepage/enabled`)
 * `sysfs_sysfs_d_files.key.{n}.value` [required]: Value for the attribute (e.g. `never`)
 

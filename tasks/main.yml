@@ -2,11 +2,10 @@
 ---
 - name: install
   apt:
-    name: "{{ item }}"
+    name: "{{ sysfs_dependencies }}"
     state: "{{ apt_install_state | default('latest') }}"
     update_cache: true
     cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
-  with_items: "{{ sysfs_dependencies }}"
   tags:
     - configuration
     - sysfs
@@ -15,7 +14,9 @@
 - name: validate actions
   fail:
     msg: "Action {{ item.value.action }} is not supported"
-  when: item.value.action is defined and item.value.action not in sysfs_actions_supported
+  when:
+    - item.value.action is defined
+    - item.value.action not in sysfs_actions_supported
   with_dict: "{{ sysfs_sysfs_d_files }}"
   tags:
     - configuration
@@ -59,7 +60,7 @@
     owner: root
     group: root
     mode: 0755
-  when: "{{ sysfs_uses_old_sysfsutils | bool == true }}"
+  when: sysfs_uses_old_sysfsutils | bool
   notify: restart sysfsutils
   tags:
     - configuration
