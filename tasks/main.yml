@@ -1,4 +1,4 @@
-# tasks file for sysfs
+# tasks file
 ---
 - name: install
   apt:

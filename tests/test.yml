@@ -1,4 +1,4 @@
-# test file for sysfs
+# test file
 ---
 - hosts: localhost
   connection: local

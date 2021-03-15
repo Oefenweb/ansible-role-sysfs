@@ -1,4 +1,4 @@
-# handlers file for sysfs
+# handlers file
 ---
 - name: restart sysfsutils
   service:

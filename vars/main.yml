@@ -1,4 +1,4 @@
-# vars file for sysfs
+# vars file
 ---
 sysfs_dependencies:
   - sysfsutils

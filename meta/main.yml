@@ -1,6 +1,7 @@
-# meta file for sysfs
+# meta file
 ---
 galaxy_info:
+  namespace: oefenweb
   role_name: sysfs
   author: Mischa ter Smitten
   company: Oefenweb.nl B.V.
