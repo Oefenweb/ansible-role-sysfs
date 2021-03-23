@@ -1,6 +1,6 @@
 ## sysfs
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-sysfs.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-sysfs)
+[![CI](https://github.com/Oefenweb/ansible-sysfs/workflows/CI/badge.svg)](https://github.com/Oefenweb/ansible-sysfs/actions?query=workflow%3ACI)
 [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-sysfs-blue.svg)](https://galaxy.ansible.com/Oefenweb/sysfs)
 
 Manages sysfs in Debian-like systems (using [sysfsutils](http://packages.ubuntu.com/trusty/sysfsutils)).

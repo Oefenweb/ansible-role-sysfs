@@ -1,0 +1,15 @@
+# vars file
+---
+sysfs_sysfs_d_files:
+  000-power-state.conf:
+    - action: mode
+      attribute: power/state
+      value: '0660'
+    - action: owner
+      attribute: power/state
+      value: 'root:dummy'
+  001-transparent-hugepage.conf:
+    - attribute: kernel/mm/transparent_hugepage/enabled
+      value: never
+    - attribute: kernel/mm/transparent_hugepage/defrag
+      value: never
