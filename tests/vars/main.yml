@@ -1,62 +1,15 @@
 # vars file
 ---
-systemd_service_files:
-  - unit: lorem
-    content: |
-      [Unit]
-      Description=Start up lorem, a boolean daemon
-      After=network.target
-
-      [Service]
-      ExecStart=/bin/sleep infinity
-
-      [Install]
-      WantedBy=multi-user.target
-
-  - unit: ipsum
-    content: |
-      [Unit]
-      Description=Start up ipsum, a boolean daemon
-      After=network.target
-
-      [Service]
-      ExecStart=/bin/sleep infinity
-
-      [Install]
-      WantedBy=multi-user.target
-    enabled: true
-
-  - unit: dolor
-    content: |
-      [Unit]
-      Description=Start up dolor, a boolean daemon
-      After=network.target
-
-      [Service]
-      ExecStart=/bin/sleep infinity
-
-      [Install]
-      WantedBy=multi-user.target
-    state: started
-
-  - unit: sit
-    content: |
-      [Unit]
-      Description=Start up sit, a boolean daemon
-      After=network.target
-
-      [Service]
-      ExecStart=/bin/sleep infinity
-
-      [Install]
-      WantedBy=multi-user.target
-    masked: false
-
-systemd_unit_files:
-  - unit: lorem
-    file: limits
-    content: |
-      [Service]
-      LimitNOFILE=infinity
-      LimitMEMLOCK=infinity
-    handler_state: restarted
+sysfs_sysfs_d_files:
+  000-power-state.conf:
+    - action: mode
+      attribute: power/state
+      value: '0660'
+    - action: owner
+      attribute: power/state
+      value: 'root:dummy'
+  001-transparent-hugepage.conf:
+    - attribute: kernel/mm/transparent_hugepage/enabled
+      value: never
+    - attribute: kernel/mm/transparent_hugepage/defrag
+      value: never
